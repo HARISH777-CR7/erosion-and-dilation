@@ -59,16 +59,109 @@ Compare the original, eroded, and dilated images.
 
 ## Developed By
 
-**Name:** ____________________________
+**Name:** HARISH K
 
-**Register No:** ______________________
+**Register No:** 212225230094
 
+## PROGRAM
+
+### Original Image
+
+- A text image containing characters is displayed.
+- The image serves as the input for morphological processing.
+```python
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Step 2: Create a blank black image
+img = np.zeros((200, 600), dtype=np.uint8)
+
+# Step 3: Insert white text on the image
+cv2.putText(img, "OPENCV", (30, 140), cv2.FONT_HERSHEY_SIMPLEX,
+            3, 255, 5, cv2.LINE_AA)
+
+# Step 4: Display the original image
+plt.figure(figsize=(8, 4))
+plt.imshow(img, cmap="gray")
+plt.title("Original Image")
+plt.axis("off")
+plt.show()
+```
+### Erosion
+
+- Original image is displayed.
+- Eroded image is displayed.
+- The thickness of the characters is reduced.
+- Object boundaries shrink inward.
+```python
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+img = np.zeros((200, 600), dtype=np.uint8)
+cv2.putText(img, "OPENCV", (30, 140), cv2.FONT_HERSHEY_SIMPLEX,
+            3, 255, 5, cv2.LINE_AA)
+
+# Step 5: Structuring element (kernel)
+kernel = np.ones((5, 5), np.uint8)
+
+# Step 6: Erosion shrinks the white text inward
+eroded = cv2.erode(img, kernel, iterations=1)
+
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 2, 1)
+plt.imshow(img, cmap="gray")
+plt.title("Original Image")
+plt.axis("off")
+
+plt.subplot(1, 2, 2)
+plt.imshow(eroded, cmap="gray")
+plt.title("Eroded Image")
+plt.axis("off")
+plt.show()
+```
+### Dilation
+
+- Original image is displayed.
+- Dilated image is displayed.
+- The thickness of the characters increases.
+- Object boundaries expand outward.
+```python
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+img = np.zeros((200, 600), dtype=np.uint8)
+cv2.putText(img, "OPENCV", (30, 140), cv2.FONT_HERSHEY_SIMPLEX,
+            3, 255, 5, cv2.LINE_AA)
+
+# Same kernel as erosion
+kernel = np.ones((5, 5), np.uint8)
+
+# Step 7: Dilation expands the white text outward
+dilated = cv2.dilate(img, kernel, iterations=1)
+
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 2, 1)
+plt.imshow(img, cmap="gray")
+plt.title("Original Image")
+plt.axis("off")
+
+plt.subplot(1, 2, 2)
+plt.imshow(dilated, cmap="gray")
+plt.title("Dilated Image")
+plt.axis("off")
+plt.show()
+```
 ## Output
 
 ### Original Image
 
 - A text image containing characters is displayed.
 - The image serves as the input for morphological processing.
+<img width="640" height="248" alt="download" src="https://github.com/user-attachments/assets/c7941470-405f-4aaa-8982-e5525891bbcf" />
+<img width="332" height="366" alt="image" src="https://github.com/user-attachments/assets/a92e4aee-ce98-4979-ac60-d18d2f511569" />
 
 ### Erosion
 
@@ -76,6 +169,9 @@ Compare the original, eroded, and dilated images.
 - Eroded image is displayed.
 - The thickness of the characters is reduced.
 - Object boundaries shrink inward.
+<img width="950" height="182" alt="download" src="https://github.com/user-attachments/assets/74358167-60a8-4c8f-a3c8-f6723774d394" />
+<img width="330" height="366" alt="image" src="https://github.com/user-attachments/assets/dc77a7ab-eced-4ed0-bc23-a9c0c2b278f0" />
+
 
 ### Dilation
 
@@ -83,6 +179,9 @@ Compare the original, eroded, and dilated images.
 - Dilated image is displayed.
 - The thickness of the characters increases.
 - Object boundaries expand outward.
+<img width="950" height="182" alt="download" src="https://github.com/user-attachments/assets/3bd86699-9753-4d41-b311-9d97e9f74273" />
+<img width="305" height="370" alt="image" src="https://github.com/user-attachments/assets/b7faf720-155d-4b3c-8ac9-6a9b03dcd3ed" />
+
 
 ## Result
 
